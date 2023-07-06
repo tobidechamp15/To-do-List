@@ -102,7 +102,7 @@ li {
   justify-content: center;
   background-color: rgb(98, 98, 140);
   padding: 20px;
-  width: 100%;
+  /* width: fit-content; */
   color: #ffffff;
   font-size: 20px;
   font-weight: 500;
@@ -151,7 +151,7 @@ h1 {
   height: 35px;
   border: none;
   border-radius: 20px;
-  padding: 10px;
+  /* padding: 10px; */
   background-color: rgb(246, 245, 244);
   outline: none;
   color: #283ccf;
