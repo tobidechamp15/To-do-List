@@ -1,3 +1,98 @@
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #f5f5f5;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+body {
+  height: 100vh;
+}
+.body {
+  width: 50em;
+}
+button {
+  --color: rgb(98, 98, 140);
+  font-family: inherit;
+  display: inline-block;
+  width: 6em;
+  height: 2.6em;
+  line-height: 2.5em;
+  overflow: hidden;
+  margin: 20px;
+  font-size: 17px;
+  z-index: 1;
+  color: var(--color);
+  border: 2px solid var(--color);
+  border-radius: 16px;
+  position: relative;
+}
+
+button::before {
+  position: absolute;
+  content: "";
+  background: var(--color);
+  width: 150px;
+  height: 200px;
+  z-index: -1;
+  border-radius: 16px;
+}
+
+button:hover {
+  color: white;
+  border-radius: 16px;
+}
+
+button:before {
+  top: 100%;
+  left: 100%;
+  border-radius: 16px;
+  transition: 0.5s all;
+}
+
+button:hover::before {
+  top: -30px;
+  left: -30px;
+  border-radius: 16px;
+}
+#taskInput {
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: rgb(246, 245, 244);
+  outline: none;
+  color: #283ccf;
+}
+.addTask {
+  background: rgb(98, 98, 140);
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  /* CSS styles for medium-sized devices (tablets) */
+  .body {
+    width: 575px;
+  }
+}
+@media (min-width: 450px) and (max-width: 768px) {
+  /* CSS styles for medium-sized devices (tablets) */
+  .body {
+    width: 575px;
+  }
+}
 li {
   margin-bottom: 5px;
   display: flex;
@@ -7,12 +102,14 @@ li {
   justify-content: center;
   background-color: rgb(98, 98, 140);
   padding: 20px;
-  width: 100%;
+  /* width: fit-content; */
   color: #ffffff;
   font-size: 20px;
   font-weight: 500;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+  overflow: auto;
 }
 body {
   /* height: 100vh; */
@@ -28,7 +125,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  gap: 2em;
   flex-direction: column;
   /* background-color: rgb(73, 70, 233); */
   height: fit-content;
@@ -54,48 +151,20 @@ h1 {
   height: 35px;
   border: none;
   border-radius: 20px;
-  padding: 10px;
+  /* padding: 10px; */
   background-color: rgb(246, 245, 244);
   outline: none;
   color: #283ccf;
-  font-size: 24px;
+  /* font-size: 24px; */
 }
 #taskInput::placeholder {
   color: rgb(239, 221, 239);
   padding: 10px;
-  /* background-color: rgb(60, 0, 255); */
-  font-size: 24px;
 }
 
 #taskInput[type="text"]::selection {
   background-color: yellow; /* Change to the desired background color */
   color: black; /* Change to the desired text color */
-}
-button {
-  padding: 10px 20px;
-  text-transform: uppercase;
-  border-radius: 8px;
-  font-size: 27px;
-  font-weight: 500;
-  color: #1403cc80;
-  text-shadow: none;
-  background: transparent;
-  box-shadow: transparent;
-  border: 1px solid #ffffff80;
-  transition: 0.5s ease;
-  user-select: none;
-}
-
-.button:hover {
-  color: #ffffff;
-  background: #283ccf;
-  border: 1px solid #008cff;
-  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-  box-shadow: 0 0 5px #074678, 0 0 20px #074678, 0 0 50px #074678,
-    0 0 100px #074678;
-}
-.hidden {
-  display: none;
 }
 
 #taskList {
@@ -114,10 +183,6 @@ button {
 }
 
 .my-checkbox-class {
-  /* Custom styling for the checkbox */
-  /* ... */
-
-  /* Example styling */
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -128,31 +193,4 @@ button {
 .my-checkbox-class:checked {
   /* Styling when the checkbox is checked */
   background-color: #2196f3;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  /* CSS styles for medium-sized devices (tablets) */
-  .body {
-    width: 575px;
-  }
-}
-@media (min-width: 480px) and (max-width: 767px) {
-  /* CSS rules for large smartphones */
-  .body {
-    width: 375px;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  /* CSS rules for medium tablets */
-  .body {
-    width: 575px;
-  }
-}
-@media (max-width: 500px) {
-  /* CSS rules for smartphones */
-  body {
-    width: 100%;
-  }
-  .body {
-    width: 100%;
-  }
 }
