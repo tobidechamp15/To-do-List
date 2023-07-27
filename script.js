@@ -1,9 +1,19 @@
 var input = document.getElementById("taskInput");
+let tasks = [];
+let storedTasks = localStorage.getItem("tasks")
+
+function updateLocalStorage() {
+  localStorage.setItem("tasks", tasks);
+  console.log(tasks);
+}
 function addTask() {
   var input = document.getElementById("taskInput");
   var task = input.value;
   var taskList = document.getElementById("taskList");
   var li = document.createElement("li");
+
+  
+
   li.style.cursor = "pointer";
   // li.classList.add("tasklist");
   li.appendChild(document.createTextNode(task));
@@ -56,11 +66,14 @@ function addTask() {
     // Append the list item to the task list
     taskList.appendChild(li);
 
+    tasks.push(task);
+    updateLocalStorage()
+    console.log(tasks);
     // Clear the input field
     taskInput.value = "";
   } else {
     alert("Add a task");
-    location.reload();
+    
   }
 }
 
