@@ -15,7 +15,7 @@ function addTask() {
   var task = taskInput.value;
 var input = document.getElementById("taskInput");
 let tasks = [];
-let storedTasks = localStorage.getItem("tasks");
+let storedTasks = localStorage.getItem("tasks")
 
 function updateLocalStorage() {
   localStorage.setItem("tasks", tasks);
@@ -26,6 +26,8 @@ function addTask() {
   var task = input.value;
   var taskList = document.getElementById("taskList");
   var li = document.createElement("li");
+
+  
 
   li.style.cursor = "pointer";
   // li.classList.add("tasklist");
@@ -63,11 +65,24 @@ function addTask() {
     // Append the list item to the task list
     taskList.appendChild(li);
 
+<<<<<<< HEAD
+    // Add the task to the tasks array
+    tasks.push(task);
+    updateLocalStorage();
+
+=======
+    tasks.push(task);
+    updateLocalStorage()
+    console.log(tasks);
+>>>>>>> 4a4b1240049e72de135edccc7d1e2e68710a8243
     // Clear the input field
     taskInput.value = "";
   } else {
     alert("Add a task");
-
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 4a4b1240049e72de135edccc7d1e2e68710a8243
   }
 }
 
