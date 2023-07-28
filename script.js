@@ -12,16 +12,6 @@ function updateLocalStorage() {
 
 // Function to add a task
 function addTask() {
-  var task = taskInput.value;
-var input = document.getElementById("taskInput");
-let tasks = [];
-let storedTasks = localStorage.getItem("tasks");
-
-function updateLocalStorage() {
-  localStorage.setItem("tasks", tasks);
-  console.log(tasks);
-}
-function addTask() {
   var input = document.getElementById("taskInput");
   var task = input.value;
   var taskList = document.getElementById("taskList");
@@ -30,7 +20,7 @@ function addTask() {
   li.style.cursor = "pointer";
   // li.classList.add("tasklist");
   li.appendChild(document.createTextNode(task));
-  li.addEventListener("click", lineThrough);
+  // li.addEventListener("click", lineThrough);
 
   if (task) {
     // Create a new list item
@@ -60,14 +50,28 @@ function addTask() {
     // Append the delete button to the list item
     li.appendChild(deleteBtn);
 
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("my-checkbox-class");
+    li.appendChild(checkbox);
+    checkbox.addEventListener("change", function () {
+      if (checkbox.checked) {
+        li.style.textDecoration = "line-through";
+      } else {
+        li.style.textDecoration = "none";
+      }
+    });
     // Append the list item to the task list
     taskList.appendChild(li);
+
+    // Add the task to the tasks array
+    tasks.push(task);
+    updateLocalStorage();
 
     // Clear the input field
     taskInput.value = "";
   } else {
     alert("Add a task");
-
   }
 }
 
