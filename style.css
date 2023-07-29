@@ -96,10 +96,10 @@ button:hover::before {
 li {
   margin-bottom: 5px;
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   gap: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: rgb(98, 98, 140);
   padding: 20px;
   /* width: fit-content; */
@@ -183,10 +183,11 @@ h1 {
 }
 
 .my-checkbox-class {
-  display: inline-block;
+  display: flex;
   width: 20px;
   height: 20px;
   background-color: #ccc;
+  justify-self: start;
   border-radius: 100%;
 }
 
