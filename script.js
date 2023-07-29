@@ -33,12 +33,12 @@ function addTask() {
     deleteBtn.style.display = "none";
     deleteBtn.classList.add("cancel-btn");
 
-    li.addEventListener("mouseover", function () {
-      deleteBtn.style.display = "block";
-    });
-    li.addEventListener("mouseout", function () {
-      deleteBtn.style.display = "none";
-    });
+    // li.addEventListener("mouseover", function () {
+    //   deleteBtn.style.display = "block";
+    // });
+    // li.addEventListener("mouseout", function () {
+    //   deleteBtn.style.display = "none";
+    // });
     deleteBtn.addEventListener("click", function () {
       li.remove();
       tasks = tasks.filter(function (item) {
@@ -57,8 +57,12 @@ function addTask() {
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
         li.style.textDecoration = "line-through";
+        li.style.textDecorationColor = "red";
+        li.style.textDecorationThickness = "5px";
+        deleteBtn.style.display = "block";
       } else {
         li.style.textDecoration = "none";
+        deleteBtn.style.display = "none";
       }
     });
     // Append the list item to the task list
@@ -83,7 +87,7 @@ function loadTasks() {
 
     var deleteBtn = document.createElement("img");
     deleteBtn.src = "cancel.svg";
-    deleteBtn.style.display = "block";
+    deleteBtn.style.display = "none";
     deleteBtn.classList.add("cancel-btn");
 
     // li.addEventListener("mouseover", function () {
@@ -106,8 +110,13 @@ function loadTasks() {
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
         li.style.textDecoration = "line-through";
+        li.style.textDecorationColor = "red";
+        li.style.textDecorationThickness = "5px";
+
+        deleteBtn.style.display = "block";
       } else {
         li.style.textDecoration = "none";
+        deleteBtn.style.display = "none";
       }
     });
 
