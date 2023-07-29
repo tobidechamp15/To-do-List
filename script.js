@@ -18,7 +18,6 @@ function addTask() {
   // Clear the input field
   input.value = "";
   if (task) {
-    // Create a new list item
     const li = document.createElement("li");
     li.textContent = task;
 
