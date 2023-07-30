@@ -18,7 +18,7 @@ Liveserver
 
 ## Live Demo
 
-[Live Demo](https://tobidechamp15.github.io/To-do-List/ )
+[Live Demo](https://champ-todo.netlify.app/)
 
 ### Setup
 
