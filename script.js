@@ -33,12 +33,12 @@ function addTask() {
     deleteBtn.style.display = "none";
     deleteBtn.classList.add("cancel-btn");
 
-    li.addEventListener("mouseover", function () {
-      deleteBtn.style.display = "block";
-    });
-    li.addEventListener("mouseout", function () {
-      deleteBtn.style.display = "none";
-    });
+    // li.addEventListener("mouseover", function () {
+    //   deleteBtn.style.display = "block";
+    // });
+    // li.addEventListener("mouseout", function () {
+    //   deleteBtn.style.display = "none";
+    // });
     deleteBtn.addEventListener("click", function () {
       li.remove();
       tasks = tasks.filter(function (item) {
@@ -54,11 +54,15 @@ function addTask() {
     checkbox.type = "checkbox";
     checkbox.classList.add("my-checkbox-class");
     li.appendChild(checkbox);
-    checkbox.addEventListener("change", function () {
+    checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
         li.style.textDecoration = "line-through";
+        li.style.textDecorationColor = "red";
+        li.style.textDecorationThickness = "5px";
+        deleteBtn.style.display = "block";
       } else {
         li.style.textDecoration = "none";
+        deleteBtn.style.display = "none";
       }
     });
     // Append the list item to the task list
@@ -77,7 +81,7 @@ function addTask() {
 
 // Function to load the stored tasks on page load
 function loadTasks() {
-  tasks.forEach(function (task) {
+  tasks.forEach((task) => {
     var li = document.createElement("li");
     li.textContent = task;
 
@@ -86,18 +90,34 @@ function loadTasks() {
     deleteBtn.style.display = "none";
     deleteBtn.classList.add("cancel-btn");
 
-    li.addEventListener("mouseover", function () {
-      deleteBtn.style.display = "block";
-    });
-    li.addEventListener("mouseout", function () {
-      deleteBtn.style.display = "none";
-    });
-    deleteBtn.addEventListener("click", function () {
+    // li.addEventListener("mouseover", function () {
+    //   deleteBtn.style.display = "block";
+    // });
+    // li.addEventListener("mouseout", function () {
+    //   deleteBtn.style.display = "none";
+    // });
+    deleteBtn.addEventListener("click", () => {
       li.remove();
-      tasks = tasks.filter(function (item) {
+      tasks = tasks.filter((item) => {
         return item !== task;
       });
       updateLocalStorage();
+    });
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("my-checkbox-class");
+    li.appendChild(checkbox);
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        li.style.textDecoration = "line-through";
+        li.style.textDecorationColor = "red";
+        li.style.textDecorationThickness = "5px";
+
+        deleteBtn.style.display = "block";
+      } else {
+        li.style.textDecoration = "none";
+        deleteBtn.style.display = "none";
+      }
     });
 
     li.appendChild(deleteBtn);
@@ -106,7 +126,7 @@ function loadTasks() {
 }
 
 // Load stored tasks on page load
-window.addEventListener("load", function () {
+window.addEventListener("load", () => {
   loadTasks();
 });
 
@@ -115,7 +135,7 @@ var button = document.querySelector(".button");
 button.addEventListener("click", addTask);
 
 // Add task on Enter key press
-taskInput.addEventListener("keyup", function (event) {
+taskInput.addEventListener("keyup", (event) => {
   if (event.keyCode === 13) {
     event.preventDefault();
     button.click();
