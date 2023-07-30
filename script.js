@@ -1,3 +1,8 @@
+//Load stored tasks on page load
+window.addEventListener("load", () => {
+  loadTasks();
+});
+
 var taskInput = document.getElementById("taskInput");
 var taskList = document.getElementById("taskList");
 
@@ -65,6 +70,10 @@ function addTask() {
         deleteBtn.style.display = "none";
       }
     });
+
+    // li.contentEditable()
+    li.setAttribute("contenteditable", "true");
+
     // Append the list item to the task list
     taskList.appendChild(li);
 
@@ -119,16 +128,12 @@ function loadTasks() {
         deleteBtn.style.display = "none";
       }
     });
+    li.setAttribute("contenteditable", "true");
 
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
   });
 }
-
-// Load stored tasks on page load
-window.addEventListener("load", () => {
-  loadTasks();
-});
 
 // Add task on button click
 var button = document.querySelector(".button");
