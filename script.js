@@ -1,3 +1,8 @@
+//Load stored tasks on page load
+window.addEventListener("load", () => {
+  loadTasks();
+});
+
 var taskInput = document.getElementById("taskInput");
 var taskList = document.getElementById("taskList");
 
@@ -23,12 +28,8 @@ function addTask() {
   // li.addEventListener("click", lineThrough);
 
   if (task) {
-<<<<<<< HEAD
-    const li = document.createElement("li");
-=======
     // Create a new list item
     var li = document.createElement("li");
->>>>>>> a04f49306d5552dce406edae3a25f26383571ba4
     li.textContent = task;
 
     // Create a delete button for the list item
@@ -69,6 +70,10 @@ function addTask() {
         deleteBtn.style.display = "none";
       }
     });
+
+    // li.contentEditable()
+    li.setAttribute("contenteditable", "true");
+
     // Append the list item to the task list
     taskList.appendChild(li);
 
@@ -123,16 +128,12 @@ function loadTasks() {
         deleteBtn.style.display = "none";
       }
     });
+    li.setAttribute("contenteditable", "true");
 
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
   });
 }
-
-// Load stored tasks on page load
-window.addEventListener("load", () => {
-  loadTasks();
-});
 
 // Add task on button click
 var button = document.querySelector(".button");
