@@ -1,9 +1,9 @@
-var taskInput = document.getElementById("taskInput");
-var taskList = document.getElementById("taskList");
+let taskInput = document.getElementById("taskInput");
+let taskList = document.getElementById("taskList");
 
 // Retrieve tasks from local storage if available
-var storedTasks = localStorage.getItem("tasks");
-var tasks = storedTasks ? JSON.parse(storedTasks) : [];
+let storedTasks = localStorage.getItem("tasks");
+let tasks = storedTasks ? JSON.parse(storedTasks) : [];
 
 // Function to update local storage with the tasks
 function updateLocalStorage() {
@@ -12,15 +12,15 @@ function updateLocalStorage() {
 
 // Function to add a task
 function addTask() {
-  var task = taskInput.value;
+  let task = taskInput.value;
 
   if (task) {
     // Create a new list item
-    var li = document.createElement("li");
+    let li = document.createElement("li");
     li.textContent = task;
 
     // Create a delete button for the list item
-    var deleteBtn = document.createElement("img");
+    let deleteBtn = document.createElement("img");
     deleteBtn.src = "cancel.svg";
     deleteBtn.style.display = "none";
     deleteBtn.classList.add("cancel-btn");
@@ -33,6 +33,8 @@ function addTask() {
     });
     deleteBtn.addEventListener("click", function () {
       li.remove();
+
+
       tasks = tasks.filter(function (item) {
         return item !== task;
       });
@@ -41,6 +43,18 @@ function addTask() {
 
     // Append the delete button to the list item
     li.appendChild(deleteBtn);
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("my-checkbox-class");
+    li.appendChild(checkbox);
+    checkbox.addEventListener("change", function () {
+      if (checkbox.checked) {
+        li.style.textDecoration = "line-through";
+      } else {
+        li.style.textDecoration = "none";
+      }
+    });
 
     // Append the list item to the task list
     taskList.appendChild(li);
@@ -59,10 +73,10 @@ function addTask() {
 // Function to load the stored tasks on page load
 function loadTasks() {
   tasks.forEach(function (task) {
-    var li = document.createElement("li");
+    let li = document.createElement("li");
     li.textContent = task;
 
-    var deleteBtn = document.createElement("img");
+    let deleteBtn = document.createElement("img");
     deleteBtn.src = "cancel.svg";
     deleteBtn.style.display = "none";
     deleteBtn.classList.add("cancel-btn");
@@ -80,7 +94,17 @@ function loadTasks() {
       });
       updateLocalStorage();
     });
-
+const checkbox = document.createElement("input");
+checkbox.type = "checkbox";
+checkbox.classList.add("my-checkbox-class");
+li.appendChild(checkbox);
+checkbox.addEventListener("change", function () {
+  if (checkbox.checked) {
+    li.style.textDecoration = "line-through";
+  } else {
+    li.style.textDecoration = "none";
+  }
+});
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
   });
@@ -92,7 +116,7 @@ window.addEventListener("load", function () {
 });
 
 // Add task on button click
-var button = document.querySelector(".button");
+let button = document.querySelector(".button");
 button.addEventListener("click", addTask);
 
 // Add task on Enter key press
